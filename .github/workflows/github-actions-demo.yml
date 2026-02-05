@@ -1,6 +1,13 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on:
+  schedule:
+    # 每天UTC时间1点执行（北京时间上午9点）
+    - cron: '50 * * * *'
+    # 也可以添加多个时间点
+    # - cron: '0 13 * * *'  # 每天UTC时间13点（北京时间21点）
+  
+  # 允许手动触发
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
