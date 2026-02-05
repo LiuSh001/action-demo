@@ -15,4 +15,9 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+       ### ✅ 新增步骤：执行 shell 脚本
+      - name: Run build script
+        run: |
+          chmod +x ./daily.sh
+          ./daily.sh
       - run: echo "🍏 This job's status is ${{ job.status }}."
