@@ -16,8 +16,16 @@ jobs:
         run: |
           ls ${{ github.workspace }}
        ### ✅ 新增步骤：执行 shell 脚本
-      - name: Run build script
+      - name: Execute inline shell commands
         run: |
-          chmod +x ./daily.sh
-          ./daily.sh
+          echo "🚀 Starting custom script..."
+          echo "Current date: $(date)"
+          curl -X POST "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=e966d09c-bdd6-4308-b13d-3822866f9e03" \
+            -H "Content-Type: application/json" \
+             -d '{
+               "msgtype": "text",
+               "text": {
+                   "content": "hello world"
+               }
+             }' 
       - run: echo "🍏 This job's status is ${{ job.status }}."
