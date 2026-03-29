@@ -39,3 +39,8 @@ jobs:
                }
              }' 
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Run daily script
+        run: |
+          chmod +x daily.sh
+          ./daily.sh
+      - run: echo "🖥️ The workflow is ok."
